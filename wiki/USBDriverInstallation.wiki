@@ -1,4 +1,4 @@
-#summary Preferred method of installing the USB driver.
+#summary How to install the USB Driver
 
 == Introduction ==
 
