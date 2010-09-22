@@ -23,7 +23,7 @@ The device uses the generic [http://sourceforge.net/apps/trac/libusb-win32/wiki 
 {{{
 set-led.exe rgb 255 255 255
 }}}
-If the driver installed succesfully, you should see the light light up in white. You can now move on to the [listener] and the [hudson plugin]. 
+If the driver installed succesfully, you should see the light light up in white. You can now move on to the [Listener] and the [HudsonPlugin Hudson Plugin]. 
 If the driver wasn't installed correctly you'll get this error message:
 {{{
 Could not find USB device "USRGB" with vid=0x16c0 pid=0x5df
