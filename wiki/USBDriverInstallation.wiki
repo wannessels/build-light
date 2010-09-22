@@ -8,10 +8,11 @@ The device uses the generic [http://sourceforge.net/apps/trac/libusb-win32/wiki 
 
 == Installing the usb driver ==
 
+  # [http://build-light.googlecode.com/files/buildlight_usb_driver.zip Download the drivers]
   # Make sure the build light is plugged in
   # Open Device Manager (start - run - *devmgmt.msc*)
   # Open up _Human Interface Devices_ and find the device with _vid 16CO & pid 05DF_ * TODO image*
-  # Update the driver and point to the downloaded driver *TODO image, download link*.
+  # Update the driver and point to the downloaded driver.
   # Unplug and reconnect the usb cable. You don't have to reboot.
   # You can now [#Testing test] your installation
 
