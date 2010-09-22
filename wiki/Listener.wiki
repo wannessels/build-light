@@ -1,5 +1,5 @@
 #summary How to run the Build Light listener process
 
 _NOTE The listener has to be run on the pc that has the Build Light_
-  # Download and extract the [http://build-light.googlecode.com/files/build-light-listener.zip listener]
-  # Run with {{{ java -cp build-light-listener-1.0-SNAPSHOT.jar be.cegeka.BuildLightListener 1234 }}}, where _1234_ is the port you used in the [HudsonPlugin Hudson Plugin]
+  * Download and extract the [http://build-light.googlecode.com/files/build-light-listener.zip listener]
+  * Run with {{{ java -cp build-light-listener-1.0-SNAPSHOT.jar be.cegeka.BuildLightListener 1234 }}}, where _1234_ is the port you used in the [HudsonPlugin Hudson Plugin]
