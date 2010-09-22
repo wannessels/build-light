@@ -1,14 +1,15 @@
 #summary How to install and configure the hudson plugin
 
 
- === Installing the plugin ===
+= Installing the plugin =
 (taken from the original [http://wiki.hudson-ci.org/display/HUDSON/Plugins Hudson Plugins documentation])
   # Download the [http://build-light.googlecode.com/files/build-light.hpi plugin]
   # Go to _http://yourhost/hudson/pluginManager/_
   # Upload the _.hpi_ file
   # Restart Hudson
 
- === Configuring the plugin ===
+
+= Configuring the plugin =
   # Configure your project
   # Under _Post-build Actions_,check _Build light_
   # Fill in hostname (or ip) and port of the pc that has the Build Light connected
