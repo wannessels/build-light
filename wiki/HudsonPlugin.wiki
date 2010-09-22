@@ -1,5 +1,6 @@
 #summary How to install and configure the hudson plugin
 
+_NOTE Currently the plugin will change color based on the last build. If project A fails the light will turn red, and when project B succeeds the light will turn green. There's an open [http://code.google.com/p/build-light/issues/detail?id=1 issue] to add this functionality to the plugin. If you're impatient you can [http://build-light.googlecode.com/svn/trunk/hudson-plugin/ check out the source] and add it yourself :) _
 
 = Installing the plugin =
 (taken from the original [http://wiki.hudson-ci.org/display/HUDSON/Plugins Hudson Plugins documentation])
