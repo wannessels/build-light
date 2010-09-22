@@ -1,0 +1,29 @@
+#summary Preferred method of installing the USB driver.
+
+== Introduction ==
+
+Because the Build Light registers as a HID (Human Interface Device), your OS will use it's default drivers and won't prompt you for them. You still need specific drivers though. 
+The device uses the generic [http://sourceforge.net/apps/trac/libusb-win32/wiki libusb-win32] usb drivers. Here's how to install them...
+
+
+== Installing the usb driver ==
+
+  # Make sure the build light is plugged in
+  # Open Device Manager (start - run - *devmgmt.msc*)
+  # Open up _Human Interface Devices_ and find the device with _vid 16CO & pid 05DF_ * TODO image*
+  # Update the driver and point to the downloaded driver *TODO image, download link*.
+  # Unplug and reconnect the usb cable. You don't have to reboot.
+
+== Testing ==
+
+Open a command prompt and type
+{{{
+set-led.exe rgb 255 255 255
+}}}
+If the driver installed succesfully, you should see the light light up in white. You can now move on to the [listener] and the [hudson plugin]. 
+If the driver wasn't installed correctly you'll get this error message:
+{{{
+Could not find USB device "USRGB" with vid=0x16c0 pid=0x5df
+}}}
+
+== Backup procedure for installing the usb driver ==
