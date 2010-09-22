@@ -27,3 +27,12 @@ Could not find USB device "USRGB" with vid=0x16c0 pid=0x5df
 }}}
 
 == Backup procedure for installing the usb driver ==
+  # Unplug the Build Light
+  # Open [http://libusb-winusb-wip.googlecode.com/files/zadig.exe zadig.exe]
+  # Under _Options_, select _Advanced Mode_ and _List All Devices_
+  # Under _Target Driver_, select _libusb (v1.2.1.20)_
+  # Reconnect the Build Light. The Info windows should say _x+1 devices found_
+  # Select the Build Light from the dropdown. It will probably show up as _USB Human Interface Device_ . Verify the _Vendor ID 16C0_ and _Product ID 05DF_
+  # Click _Install Driver_
+  # You can now [#Testing test] your installation
+  
