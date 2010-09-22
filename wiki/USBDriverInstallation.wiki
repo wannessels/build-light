@@ -18,7 +18,8 @@ The device uses the generic [http://sourceforge.net/apps/trac/libusb-win32/wiki 
 
 == Testing ==
 
-Open a command prompt and type
+  # Download the [http://build-light.googlecode.com/files/buildlight_usb_driver.zip commandline utility] 
+  # Open a command prompt and type
 {{{
 set-led.exe rgb 255 255 255
 }}}
