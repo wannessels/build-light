@@ -3,7 +3,6 @@ package be.cegeka;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.BuildListener;
-import hudson.model.Descriptor;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
@@ -13,19 +12,14 @@ import hudson.tasks.Notifier;
 import hudson.tasks.Publisher;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.io.PrintStream;
 import java.net.InetAddress;
-
-import net.sf.json.JSONObject;
+import java.net.Socket;
 
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
 
 public class BuildLightPublisher extends Notifier {
 	
-	private static final int SENDER_PORT = 65432;
-
 	@Extension
 	public static class BuildLightDescriptor extends BuildStepDescriptor<Publisher> {
 
@@ -60,8 +54,7 @@ public class BuildLightPublisher extends Notifier {
 	public boolean perform(AbstractBuild<?, ?> build, Launcher launcher,
 			BuildListener listener) throws InterruptedException, IOException {
 		byte[] message = Result.SUCCESS.equals(build.getResult()) ? GREEN : RED;
-		listener.getLogger().println("sending " + toString(message) + " to " + host + ":" + port);
-		send(message);
+		send(message, listener.getLogger());
 		return true;
 	}
 	
@@ -75,17 +68,22 @@ public class BuildLightPublisher extends Notifier {
 	}
 
 
-	private void send(byte[] message) {
-		DatagramSocket socket = null;
+	private void send(byte[] message, PrintStream logger) {
+		Socket socket = null;
 		try {
-			socket = new DatagramSocket(SENDER_PORT);
-			DatagramPacket packet = new DatagramPacket(message, message.length, InetAddress.getByName(host), port);
-			socket.send(packet);
+			logger.println("sending " + toString(message) + " to " + host + ":" + port);
+			socket = new Socket(InetAddress.getByName(host), port);
+			socket.getOutputStream().write(message);
+			socket.close();
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			e.printStackTrace(logger);
 		} finally {
 			if (socket != null) {
-				socket.close();
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace(logger);
+				}
 			}
 		}
 	}

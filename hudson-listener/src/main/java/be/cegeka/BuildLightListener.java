@@ -1,22 +1,26 @@
 package be.cegeka;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class BuildLightListener {
 
 	public static void main(String[] args) throws IOException {
 		int port = getPort(args);
-		System.out.println("Listening for UDP packets on port " + port);
-		DatagramSocket serverSocket = new DatagramSocket(port);
+		System.out.println("Listening on TCP port " + port);
+		
+		ServerSocket serverSocket = new ServerSocket(port);
+		
+		
 		byte[] buffer = new byte[3];
 		
 		while(true) {
-			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-			serverSocket.receive(packet);
+			Socket socket = serverSocket.accept();
+			socket.getInputStream().read(buffer);
+			socket.close();
 			
-			String command = createCommand(packet);
+			String command = createCommand(buffer);
 			System.out.println(command);
 			try {
 				Runtime.getRuntime().exec(command);
@@ -27,10 +31,10 @@ public class BuildLightListener {
 		}
 	}
 	
-	private static String createCommand(DatagramPacket packet) {
-		byte red = packet.getData()[0];
-		byte green = packet.getData()[1];
-		byte blue = packet.getData()[2];
+	private static String createCommand(byte[] data) {
+		byte red = data[0];
+		byte green = data[1];
+		byte blue = data[2];
 		StringBuilder sb = new StringBuilder();
 		sb.append("set-led.exe");
 		sb.append(" rgb ");
